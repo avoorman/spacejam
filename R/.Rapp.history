@@ -1,0 +1,35 @@
+library(spacejam)
+Create graph and distribution used in Figure 2 of Voorman, Shojaie and Witten (2013):#
+p <- 100 #variables#
+n <- 50 #observations#
+#
+#Generate Graph#
+set.seed(20)#
+g <- rdag(p,80)#
+mylayout <- layout.fruchterman.reingold(g)#
+#
+par(mfrow=c(1,2))#
+plot(g, layout = mylayout, edge.color = "gray50", #
+        vertex.color = "red", vertex.size = 3, vertex.label = NA, #
+        edge.arrow.size = 0.4)#
+plot(moralize(g), layout = mylayout, edge.color = "gray50", #
+        vertex.color = "red", vertex.size = 3, vertex.label = NA, #
+        edge.arrow.size = 0.4)#
+#
+#create a distribution on the DAG using cubic polynomials with random normal coefficients #
+#with standard deviations of 1, 0.5 and 0.5, (i.e. giving more weight to linear association than quadratic or cubic)#
+data <- generate.dag.data(g,n,basesd=c(1,0.5,0.5))#
+X <- data$X#
+#
+#Fit conditional independence graph at one lambda #
+mygraph <- SJ(X, lambda = 0.6)#
+#
+#Fit conditional independence graph at 10 (hopefully reasonable) lambdas:#
+mygraph <- SJ(X, length = 10)#
+#
+#Fit conditional independence graph using quadratic basis functions:#
+mygraph <- SJ(X, bfun = function(x){cbind(x,x^2)}, length = 10)
+par(mfrow=c(1,3))
+plot(g, layout=mylayout, edge.color = "gray50", vertex.color = "red", vertex.size = 3, vertex.label = NA, edge.arrow.size = 0.4, main="True DAG")
+plot(fit4, layout = mylayout, which= 4, main= paste0("lambda = ",round(mygraph.dag$lambda[4],2) ))
+fit4 <- SJ.dag(X, length = 10)
