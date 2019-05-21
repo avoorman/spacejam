@@ -9,7 +9,7 @@ SJ.dag <-function(X, bfun=bs, lambda = NULL,length = NULL, ord=1:p, verbose=FALS
 		stop("dimensions of b0 not compatible with basis function")
 	}
 		
-	if(!is.null(lambda) & is.null(length)){
+	if(!is.null(lambda) & !is.null(length)){
 		if(length(lambda) != length) warning("Lambda and length not compatible. Using lambda")
 	}
 	

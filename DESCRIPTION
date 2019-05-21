@@ -1,7 +1,7 @@
 Package: spacejam
 Type: Package
 Title: Sparse conditional graph estimation with joint additive models.  
-Version: 1.1
+Version: 1.2
 Date: 2019-04-30
 Author: Arend Voorman
 Maintainer: Arend Voorman <arie.voorman@gmail.com>
