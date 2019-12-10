@@ -1,6 +1,11 @@
 export(plot.SJ, plot.SJ.dag, SJ, SJ.dag, rdag, moralize, generate.dag.data)
+import(igraph,Matrix,splines)
+importFrom("graphics", "plot")
+importFrom("stats", "rnorm")
+importFrom("utils", "combn")
 useDynLib(spacejam)
 S3method(print, SJ)
 S3method(print, SJ.dag)
 S3method(plot, SJ)
 S3method(plot, SJ.dag)
+

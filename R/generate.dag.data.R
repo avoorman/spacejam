@@ -10,16 +10,16 @@ generate.dag.data <-function(g,n,basesd = 1, basemean = 0, bfuns = function(x){c
 		parents <- neighbors(g,i,mode="in")
 		v <- length(parents)
 		if(usenorm){
-			X[,i] <-  rnorm(n=n,1)
+			X[,i] <-  stats::rnorm(n=n,1)
 		} else {
-			X[,i] <- runif(n,min=-sqrt(12),max=sqrt(12))
+			X[,i] <- stats::runif(n,min=-sqrt(12),max=sqrt(12))
 		}
 		if(v > 0){
 			for(j in 1:v){
 					if(makeFunctions){
 						x <- X[,parents[j] ]
 						xx <- as.matrix(bfuns(x))
-						beta <- rnorm(ncol(xx),mean=basemean, sd= basesd)
+						beta <- stats::rnorm(ncol(xx),mean=basemean, sd= basesd)
 						#beta <- beta/sd(xx%*%beta)
 						funclist[[i]][[parents[j]]] <- function(x)(bfuns(x)%*%beta)	
 						environment(funclist[[i]][[parents[j]]]) <- new.env()

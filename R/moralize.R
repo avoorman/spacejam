@@ -8,7 +8,7 @@ moralize <- function (g)
     Shared <- apply(M, 2, which)
     for (i in 1:p) {
         if (length(Shared[[i]]) > 1) 
-            g.moral <- add.edges(g.moral, c(combn(Shared[[i]], 
+            g.moral <- add.edges(g.moral, c(utils::combn(Shared[[i]], 
                 2)))
     }
     g.moral <- simplify(g.moral)

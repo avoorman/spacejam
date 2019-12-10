@@ -11,10 +11,10 @@ Estimate a graph with Spacejam
 These functions estimate graphs using flexible node-wise regressions, employing a group-lasso penalty to encourage sparsity. Details are given in Voorman, Shojaie and Witten (2013).
 }
 \usage{
-SJ(X, bfun = bs, lambda=NULL, length =NULL, verbose = FALSE, b0 = NULL, maxit = 100, 
+SJ(X, bfun = splines::bs, lambda=NULL, length =NULL, verbose = FALSE, b0 = NULL, maxit = 100, 
 	tol = .Machine$double.eps^0.25,G.max = NULL)
 	
-SJ.dag(X, bfun = bs, lambda=NULL, length =NULL, ord = 1:p, verbose = FALSE, b0 = NULL, 
+SJ.dag(X, bfun = splines::bs, lambda=NULL, length =NULL, ord = 1:p, verbose = FALSE, b0 = NULL, 
 	maxit = 100, tol = .Machine$double.eps^0.25)
 }
 %- maybe also 'usage' for other objects documented here.

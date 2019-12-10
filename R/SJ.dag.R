@@ -1,4 +1,4 @@
-SJ.dag <-function(X, bfun=bs, lambda = NULL,length = NULL, ord=1:p, verbose=FALSE,b0=NULL, maxit=100, tol = .Machine$double.eps^0.25){
+SJ.dag <-function(X, bfun=splines::bs, lambda = NULL,length = NULL, ord=1:p, verbose=FALSE,b0=NULL, maxit=100, tol = .Machine$double.eps^0.25){
 	cl <- match.call()
 	bfun <- match.fun(bfun)
 	n <- nrow(X)

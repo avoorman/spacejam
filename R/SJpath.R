@@ -6,7 +6,7 @@ SJpath <- function(X,bfun=function(x){cbind(x,x^2,x^3)}, lambda=NULL,length =10,
 	k <- ncol(bfun(X[,1]))
 	
 	if(!is.null(G.max)){
-		if(class(G.max) =="igraph") G.max <- get.adjacency(G.max, sparse=TRUE) ==1
+		if(inherits(G.max, "igraph")) G.max <- get.adjacency(G.max, sparse=TRUE) ==1
 		stopifnot(storage.mode(G.max)=="logical")	
 	}
 	

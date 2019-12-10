@@ -1,4 +1,4 @@
-SJ <- function(X,bfun=bs, lambda=NULL,length =NULL, verbose=FALSE,b0=NULL, maxit=100, tol = .Machine$double.eps^0.25, G.max=NULL){
+SJ <- function(X,bfun=splines::bs, lambda=NULL,length =NULL, verbose=FALSE,b0=NULL, maxit=100, tol = .Machine$double.eps^0.25, G.max=NULL){
 	cl <- match.call()
 	bfun <- match.fun(bfun)
 	n <- nrow(X)
@@ -10,7 +10,7 @@ SJ <- function(X,bfun=bs, lambda=NULL,length =NULL, verbose=FALSE,b0=NULL, maxit
 	}
 	
 	if(!is.null(G.max)){
-		if(class(G.max) =="igraph") G.max <- get.adjacency(G.max, sparse=TRUE) ==1
+		if(inherits(G.max,"igraph")) G.max <- get.adjacency(G.max, sparse=TRUE) ==1
 		stopifnot(storage.mode(G.max)=="logical")	
 		stopifnot(ncol(X) == ncol(G.max))
 	} 

@@ -1,6 +1,5 @@
 grpsel <-
 function(X, bigX, lambda, n, k, p, tol = .Machine$double.eps^0.25, maxit=100,b0=NULL,verbose=FALSE, G.max = NULL){
-	require("Matrix")
 	if(is.null(b0)){
 		b0 <- matrix(0,nrow=p,ncol=k*p)
 		res <- X
@@ -22,7 +21,7 @@ function(X, bigX, lambda, n, k, p, tol = .Machine$double.eps^0.25, maxit=100,b0=
 	if(verbose){
 		ssres <- sum(res^2)
 		b2 <- b0^2
-		pen <- Matrix(0,p,p)
+		pen <- Matrix::Matrix(0,p,p)
 		for(ipen in p*(1:k-1)) pen <- pen + b2[,ipen+1:p] + t(b2[,ipen+1:p])
 		pen <- sum(sqrt(pen))/2
 		cat("obj0 = ", lambda*pen*(n-1)+(0.5)*ssres)
